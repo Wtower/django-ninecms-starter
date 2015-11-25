@@ -1,0 +1,17 @@
+bleach==1.4.2
+Django==1.8.6
+django-guardian==1.3.2
+django-mptt==0.7.4
+# django-ninecms==0.5.0
+Pillow==3.0.0
+pytz==2015.7
+
+coverage==4.0.2
+django-admin-bootstrapped==2.5.6
+# django-admin-bootstrapped-plus==0.1.0
+django-bootstrap3==6.2.2
+django-debug-toolbar==1.4.0
+mysqlclient==1.3.7
+newrelic==2.58.0.43
+python3-memcached==1.51
+sqlparse==0.1.18
