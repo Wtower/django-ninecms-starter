@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.contrib import messages
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,17 +32,26 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'admin_bootstrapped_plus',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mptt',
+    'debug_toolbar',
+    'guardian',
+    'ninecms',
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
@@ -55,7 +65,9 @@ ROOT_URLCONF = 'ninecms_starter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR,  'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,6 +76,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': True,
         },
     },
 ]
@@ -87,6 +100,11 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
+LANGUAGES = (
+    ('en', 'English'),
+    # ('el', 'Greek'),
+)
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -104,3 +122,97 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
+
+
+# Media
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+
+# Error reporting
+
+ADMINS = (
+    ("Webmaster", "web@9-dev.com"),
+)
+
+MANAGERS = (
+    ("Webmaster", "web@9-dev.com"),
+)
+
+EMAIL_HOST = 'mail.9-dev.com'
+
+EMAIL_HOST_USER = 'do-not-reply@9-dev.com'
+
+EMAIL_HOST_PASSWORD = ''
+
+EMAIL_USE_SSL = True
+
+EMAIL_PORT = 465
+
+EMAIL_SUBJECT_PREFIX = '[9cms] '
+
+SERVER_EMAIL = 'do-not-reply@9-dev.com'
+
+DEFAULT_FROM_EMAIL = 'do-not-reply@9-dev.com'
+
+
+# Security
+
+LOGIN_URL = '/admin/login/'
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SECURE_BROWSER_XSS_FILTER = True
+
+X_FRAME_OPTIONS = 'DENY'
+
+CSRF_COOKIE_HTTPONLY = True
+
+SESSION_COOKIE_NAME = 'ninecms_starter_sessionid'
+
+
+# Caches
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
+CACHE_MIDDLEWARE_SECONDS = 3 * 60 * 60  # or whatever
+
+
+# Guardian
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # this is default
+    'guardian.backends.ObjectPermissionBackend',
+)
+
+ANONYMOUS_USER_ID = -1
+
+
+# Django admin
+
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success success',
+    messages.WARNING: 'alert-warning warning',
+    messages.ERROR: 'alert-danger error'
+}
+
+
+# CMS settings
+
+from ninecms.settings import *
+
+SITE_NAME = "9cms starter"
+
+SITE_AUTHOR = "George Karakostas"
+
+SITE_KEYWORDS = "ninecms"
+
+I18N_URLS = True  # False
