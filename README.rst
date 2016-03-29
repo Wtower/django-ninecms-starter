@@ -19,21 +19,21 @@ Full guide
 1. Install Python
 
    Ninecms is based on Django for Python, thus it requires Python and Django to be installed.
-   For a full list of dependencies see `Ninecms Dependencies<https://github.com/Wtower/django-ninecms#dependencies>`_.
-   To obtain a Python version see `Download Python<https://www.python.org/downloads/>`_.
+   For a full list of dependencies see `Ninecms Dependencies <https://github.com/Wtower/django-ninecms#dependencies>`_.
+   To obtain a Python version see `Download Python <https://www.python.org/downloads/>`_.
 
 2. Install pip
 
    Pip is the Python package manager. It is a very convenient piece of software that allows the installation and
-   management of Python packages. To `obtain pip<https://pip.pypa.io/en/stable/installing/>`_
-   download `get-pip.py<https://bootstrap.pypa.io/get-pip.py>`_ and run in its location::
+   management of Python packages. To `obtain pip <https://pip.pypa.io/en/stable/installing/>`_
+   download `get-pip.py <https://bootstrap.pypa.io/get-pip.py>`_ and run in its location::
 
        python get-pip.py
 
 3. Create a virtualenv (optional)
 
    You can optionally isolate the specific Python packages that 9cms requires to a Python virtual environment.
-   To install `virtualenv<https://virtualenv.readthedocs.org/en/latest/installation.html>`_::
+   To install `virtualenv <https://virtualenv.readthedocs.org/en/latest/installation.html>`_::
 
        pip install virtualenv
 

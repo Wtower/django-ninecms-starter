@@ -36,3 +36,6 @@ coverage.xml
 ### IDE
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
 .idea/
+
+### Virtual Fish
+.venv
