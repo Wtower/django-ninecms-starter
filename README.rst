@@ -82,3 +82,9 @@ Full guide
 
        python manage.py runserver
 
+9. Add a new page type and a node.
+
+10. Make a copy of the ``index.html`` template to ``templates/`` and customize.
+    Consult the files in ``ninecms/templates`` (such as ``block_static.html``)
+    to see how to present various fields in the overridden template.
+    Different templates per page type can be provided (read NineCMS documentation).
